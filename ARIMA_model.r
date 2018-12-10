@@ -1,21 +1,20 @@
 setwd("/Users/gorkemmeral/Documents")
 sales <- read.csv("ukweborders.csv")
-plot(sales)
 library('tidyverse')
 library('forecast')
 library('tseries')
-sales$visit_date<-as.Date(sales$visit_date)�
+sales$visit_date<-as.Date(sales$visit_date)
 plot<-ggplot(sales, aes(visit_date, orders, group=1))+geom_line()+ ylab("Sales") + xlab("Date")
 sales_ts = ts(sales[, c('orders')])
 sales$clean_orders = tsclean(sales_ts)
 clean_plot <- ggplot() + geom_line(data = sales, aes(x = visit_date, y = clean_orders, group=1)) + ylab('Cleaned Orders')
 
-sales$ord_ma = ma(sales$clean_orders, order=7) # using the clean count with no outliers
+sales$ord_ma = ma(sales$clean_orders, order=7) # using the clean orders with no outliers
 sales$ord_ma30 = ma(sales$clean_orders, order=30)
 ggplot() +
   geom_line(data = sales, aes(x = visit_date, y = clean_orders, group=1, colour = "Orders")) +
-  geom_line(data = sales, aes(x = visit_date, y = cnt_ma, group=1,   colour = "Weekly Moving Average"))  +
-  geom_line(data = sales, aes(x = visit_date, y = cnt_ma30, group=1, colour = "Monthly Moving Average"))  +
+  geom_line(data = sales, aes(x = visit_date, y = ord_ma, group=1,   colour = "Weekly Moving Average"))  +
+  geom_line(data = sales, aes(x = visit_date, y = ord_ma30, group=1, colour = "Monthly Moving Average"))  +
   ylab('Orders') +xlab('Date')
 
 #decomposition of the dataset
