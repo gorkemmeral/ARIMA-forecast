@@ -61,8 +61,5 @@ fit_w_seasonality
 
 #Forecast with seasonality
 seas_fcast <- forecast(fit_w_seasonality, h=30)
-<<<<<<< HEAD
 plot(seas_fcast)
-=======
-plot(seas_fcast)
->>>>>>> 01560368553634a4affe5f3823048b10b37ed532
+
