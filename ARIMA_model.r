@@ -1,8 +1,8 @@
 #Set working directory
-setwd("/Users/gorkemmeral/Documents")
+setwd("/Users/USER/Documents")
 
 #Read data from local file
-sales <- read.csv("ukweborders.csv")
+sales <- read.csv("weborders.csv")
 
 #Call libraries
 library('tidyverse')
