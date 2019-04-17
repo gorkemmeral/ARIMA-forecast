@@ -1,13 +1,14 @@
 #Set working directory
-setwd("/Users/USER/Documents")
+setwd("/Users/gorkemmeral/Documents")
 
 #Read data from local file
-sales <- read.csv("ukorders.csv")
+sales <- read.csv("ukweborders.csv")
 
 #Call libraries
 library('tidyverse')
 library('forecast')
 library('tseries')
+library('ggplot2')
 
 #Format the date field if needed
 sales$visit_date <- as.Date(sales$visit_date)
